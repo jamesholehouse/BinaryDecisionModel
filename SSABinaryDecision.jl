@@ -67,7 +67,7 @@ module BinaryDecSSA
     function SSA(ens_its::Int64, τₘ::Real, Δτ::Real, BD::BinDecMod)
         @unpack p₀, fixedIC, N = BD;
         # create the storage array for the ensembles
-        ens_store = Array{Array{Int64}}(undef, ens_its);
+        ens_store = Array{Array{Real}}(undef, ens_its);
         # assign the initial condition - either fixed or binomially drawn.
         if fixedIC == true
             n = ceil(Int64, N*p₀)
@@ -105,7 +105,7 @@ module BinaryDecSSA
                 # update the time.
                 τ += u;
             end
-            ens_store[it] = store;
+            ens_store[it] = (2.0 .* store .- N) ./ N; # return the value of m not N₊
         end
         return (reverse(times),ens_store)
     end
@@ -135,9 +135,11 @@ module BinaryDecSSA
     Get prob distribution at all times for an ensemble
     """
     function EnsProb(ens::Ensemble, T::Int64)
+        @unpack BD = ens;
+        @unpack N = BD;
         ns = convert(Matrix{Float64},transpose(cat(ens.sims[2]...,dims=2)))
-        mod_bins = LinRange(minimum(ns[:,T])-0.5:1:maximum(ns[:,T])+0.5);
-        mid_pts = LinRange(minimum(ns[:,T]):1:maximum(ns[:,T]));
+        mod_bins = LinRange(-1.0-(1/N),1.0+(1/N),N+2);
+        mid_pts = LinRange(-1.0,1.0,N+1);
         bin_vals = normalize(fit(Histogram, ns[:,T], mod_bins), mode=:probability).weights;
         return (mid_pts, bin_vals)
     end
