@@ -8,6 +8,9 @@ Modules for simulation and analytics of the mean-field binary decision model [1,
 - `SSABinaryDecision.jl`: code for the SSA.
 
 [1] Brock, W. A. & Durlauf, S. N. Discrete choice with social interactions. The Review of Economic Studies 68, 235–260 (2001).
+
 [2] Bouchaud, J.-P. Crises and collective socio-economic phenomena: simple models and challenges. Journal of Statistical Physics 151, 567–606 (2013).
+
 [3]  Gillespie, D. T. Stochastic simulation of chemical kinetics. Annu. Rev. Phys. Chem. 58, 35–55 (2007).
+
 [4]  Feldt, R. BlackBoxOptim. https://github.com/robertfeldt/BlackBoxOptim.jl/blob/master/examples/benchmarking/latest_toplist.csv(2021). [Online; accessed 12-August-2021].
