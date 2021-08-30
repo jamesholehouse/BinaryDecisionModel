@@ -7,6 +7,8 @@ Modules for simulation and analytics of the mean-field binary decision model [1,
 - `MF_BDM_Analytic.jl`: code for the analytic time-dependent solution.
 - `SSABinaryDecision.jl`: code for the SSA.
 
+Any comments or issues please get in touch at james.holehouse@ed.ac.uk or jamesholehouse1@gmail.com.
+
 [1] Brock, W. A. & Durlauf, S. N. Discrete choice with social interactions. The Review of Economic Studies 68, 235–260 (2001).
 
 [2] Bouchaud, J.-P. Crises and collective socio-economic phenomena: simple models and challenges. Journal of Statistical Physics 151, 567–606 (2013).
